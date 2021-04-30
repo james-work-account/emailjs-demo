@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Email.js demo application
 
-## Getting Started
+## Setup
 
-First, run the development server:
+1. Create an account on [https://www.emailjs.com/](https://www.emailjs.com/).
+2. Link up an email service in [https://dashboard.emailjs.com/admin](https://dashboard.emailjs.com/admin).
+3. Add an email template in [https://dashboard.emailjs.com/admin/templates](https://dashboard.emailjs.com/admin/templates).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Running the app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Create a `.env.local` file, add your `User ID` from [https://dashboard.emailjs.com/admin/integration](https://dashboard.emailjs.com/admin/integration), `Service ID` from Setup step 2 and the `Template ID` from Setup step 3 as environment variables. e.g.:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+   `.env.local`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+   ```bash
+   NEXT_PUBLIC_EMAILJS_KEY=user_XXXXXXXX
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=demo_service
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=demo_template
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+   Alternatively, paste these values directly into the relevant places in [/components/emailjs.js](/components/emailjs.js) (remember not to commit these values to Git).
 
-## Learn More
+   _Note: if you change these after running the app, you'll need to restart the app for these changes to take effect._
 
-To learn more about Next.js, take a look at the following resources:
+2. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   # then
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Open the app at [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. To add/remove fields, modify [/components/EmailForm.jsx](/components/EmailForm.jsx).
